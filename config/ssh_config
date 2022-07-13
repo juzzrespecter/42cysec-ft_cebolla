@@ -1,0 +1,28 @@
+Port 22
+
+PermitRootLogin prohibit-password
+
+PubkeyAuthentication yes
+
+AuthorizedKeysFile	.ssh/authorized_keys
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+
+ChallengeResponseAuthentication yes
+
+AllowAgentForwarding yes
+AllowTcpForwarding yes
+GatewayPorts yes
+X11Forwarding yes
+
+Compression yes
+TCPKeepAlive no
+ClientAliveInterval 8
+ClientAliveCountMax 4
+
+PermitTunnel yes
+
+AcceptEnv LANG LC_* LANGUAGE TMUX
+
+Subsystem	sftp	/usr/lib/ssh/sftp-server
