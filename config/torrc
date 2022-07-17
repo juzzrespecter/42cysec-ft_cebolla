@@ -3,6 +3,6 @@ HiddenServiceDir /var/lib/tor/ft_cebolla/
 HiddenServicePort 80 127.0.0.1:80
 
 ## Hidden service: sshd ##
-HiddenServiceDir /var/lib/tor/sshd/
-HiddenServicePort 22 127.0.0.1:22
+HiddenServiceDir /var/lib/tor/sshd_cebolla/
+HiddenServicePort 22 127.0.0.1:4242
 Log debug file /var/log/tor/debug.log

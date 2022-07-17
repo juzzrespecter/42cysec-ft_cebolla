@@ -7,6 +7,51 @@
     <title>ft_onion server</title>
 </head>
 <body>
-    <h1>Hola</h1>
+  <h1>Hola</h1>
+
+  <h2>Enrutamiento cebolla</h2>
+  <p>
+    Tenemos un usuario que quiere mandar un grupo de
+    datos, un usuario que desea recibirlos, y una red de nodos o servidores voluntarios.
+    El enrutamiento cebolla permite que la comunicación entre el emisor del mensaje
+    y el receptor sea en gran medida anónima, o al menos bastante más dificil de romper
+    que mediante otros protocolos como HTTP.
+  </p>
+  <p>
+    A grandes rasgos, la idea es que el mensaje entre a la red de nodos siguiendo una ruta,
+    y este mensaje irá saltando de nodo en nodo, conociendo un nodo únicamente la identidad
+    del nodo anterior que ha enviado el mensaje y el nodo de destino inmediato, de forma que
+    al terminar el recorrido el nodo de salida no tenga ninguna información sobre el nodo
+    de entrada.
+  </p>
+  <p>
+    El nombre de cebolla viene de la similitud que tiene el paquete de información en la
+    red TOR a lo largo de su recorrido, ya que al entrar lleva provisto de varias capas
+    criptograficas, que van siendo 'peladas' en cada uno de los nodos por los que va circulando,
+    hasta llegar a su destino (cada nodo posee una sola clave privada que desencripta una capa
+    del mensaje, por tanto la información se mantiene segura a lo largo del proceso).
+  </p>
+  <p>
+    El paquete 'tor' instalado en el contenedor es el software que actúa como SOCKS proxy de
+    entrada en la red de nodos; SOCKS es el protocolo encargado de transformar los paquetes
+    de red en un formato estándar para permitir la comunicación entre aplicaciones a través
+    de la red TOR.
+  </p>
+  <h3> Hidden Service dockerizado </h3>
+  <p>
+    El servicio que queramos exponer a la red usará el nodo Onion Proxy disponible dentro
+    del contenedor, que seleccionará un nodo como Introduction Point (IP) y mandará su clave
+    pública, ademas comunicará la disponibilidad del servicio al Directory Server de la red.
+    La dirección .onion del servicio contiene la información sobre la clave pública y el nodo
+    de introducción.
+    Cuando un cliente intenta acceder al servicio por medio de esta dirección, TOR escogerá
+    un nuevo nodo como Rendervouz Point (RP) de forma aleatoria y creará un circuito.
+    Después, el cliente mandará al IP una rendervouz-cookie con la información de esta
+    conexión al IP. El servicio oculto entonces tendrá conocimiento de este RP e iniciará
+    un circuito.
+    El RP, al recibir conexión del HS, notifica al cliente y se establece una conexión entre los
+    dos a partir de aquí. Por norma general, esta conexión consta de 6 nodos, tres escogidos por
+    el cliente y los otros tres por el HS.
+  </p>
 </body>
 </html>
