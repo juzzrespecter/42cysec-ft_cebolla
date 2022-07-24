@@ -1,8 +1,8 @@
 ## Hidden service: nginx server ##
 HiddenServiceDir /var/lib/tor/ft_cebolla/
-HiddenServicePort 80 127.0.0.1:80
+HiddenServicePort 80 nginx-service:80
 
 ## Hidden service: sshd ##
 HiddenServiceDir /var/lib/tor/sshd_cebolla/
-HiddenServicePort 22 127.0.0.1:4242
+HiddenServicePort 4242 nginx-service:22
 Log debug file /var/log/tor/debug.log

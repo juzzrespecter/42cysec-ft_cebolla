@@ -1,0 +1,11 @@
+services:
+  tor:
+    container_name: tor-service
+    build: ./tor/
+
+  nginx:
+    container_name: nginx-service
+    build: ./nginx/
+    expose:
+      - "80"
+      - "22"
