@@ -10,6 +10,11 @@ if [ "$1" == "cebolla" ]; then
     exit 0
 fi
 
+if [[ $1 == "stop" ]]; then
+    docker-compose down
+    exit 0
+fi
+
 if [ "$1" == "exec" ]; then
     if [ -z "$2" ] || [ -z "$(docker ps | grep tor-service)" ]; then
         echo "[ FATAL ERROR ] cebolla container not running" 1>&2

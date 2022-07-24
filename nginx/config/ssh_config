@@ -1,12 +1,12 @@
 Port 22
 
-PermitRootLogin prohibit-password
+PermitRootLogin no
 
 PubkeyAuthentication yes
 
 AuthorizedKeysFile	.ssh/authorized_keys
 
-PasswordAuthentication no
+PasswordAuthentication yes
 PermitEmptyPasswords no
 
 ChallengeResponseAuthentication yes

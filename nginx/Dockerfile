@@ -11,7 +11,7 @@ RUN apk update \
     && mkdir -p /run/openrc/ \
     && touch /run/openrc/softlevel \
     && openrc \
-    && adduser -S admin \
+    && adduser -S admin --shell /bin/sh \
     && echo admin:1234 | chpasswd \
     && chmod +x /tmp/docker-entrypoint.sh
 
