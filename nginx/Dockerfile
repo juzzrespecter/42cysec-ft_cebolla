@@ -1,3 +1,4 @@
+
 FROM alpine:latest
 
 COPY ./config/docker-entrypoint.sh /tmp/
@@ -10,7 +11,6 @@ RUN apk update \
             openrc \
     && mkdir -p /run/openrc/ \
     && touch /run/openrc/softlevel \
-    && openrc \
     && adduser -S admin --shell /bin/sh \
     && echo admin:1234 | chpasswd \
     && chmod +x /tmp/docker-entrypoint.sh

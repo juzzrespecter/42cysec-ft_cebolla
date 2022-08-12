@@ -9,7 +9,6 @@ RUN apk update \
             tor \
     && mkdir -p /run/openrc/ \
     && touch /run/openrc/softlevel \
-    && openrc \
     && rm /etc/tor/torrc.sample \
     && chmod +x /tmp/docker-entrypoint.sh
 

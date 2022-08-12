@@ -2,6 +2,10 @@ services:
   tor:
     container_name: tor-service
     build: ./tor/
+    depends_on:
+      - nginx-service
+    networks:
+      - tor-net
 
   nginx:
     container_name: nginx-service
@@ -9,3 +13,9 @@ services:
     expose:
       - "80"
       - "22"
+    networks:
+      - tor-net
+
+networks:
+  tor-net:
+    driver: bridge
